@@ -50,34 +50,51 @@
     <button onclick="sendMessage()">Send</button>
   </div>
 
-  <script>
-    function sendMessage() {
-      var userInput = document.getElementById('user-input').value;
-      var chatLog = document.getElementById('chat-log');
+<script>
+  function sendMessage() {
+    var userInput = document.getElementById('user-input').value;
+    var chatLog = document.getElementById('chat-log');
 
-      // Display user message
-      var userMessageElement = document.createElement('div');
-      userMessageElement.classList.add('user-message');
-      userMessageElement.textContent = userInput;
-      chatLog.appendChild(userMessageElement);
+    // Display user message
+    var userMessageElement = document.createElement('div');
+    userMessageElement.classList.add('user-message');
+    userMessageElement.textContent = userInput;
+    chatLog.appendChild(userMessageElement);
 
-      // Simulate bot response (in reality, this would come from a backend service)
-      var botResponseElement = document.createElement('div');
-      botResponseElement.classList.add('bot-message');
-      botResponseElement.textContent = generateBotResponse(userInput);
-      chatLog.appendChild(botResponseElement);
+    // Simulate bot response
+    var botResponseElement = document.createElement('div');
+    botResponseElement.classList.add('bot-message');
+    botResponseElement.textContent = generateBotResponse(userInput);
+    chatLog.appendChild(botResponseElement);
 
-      // Clear input field
-      document.getElementById('user-input').value = '';
+    // Clear input field
+    document.getElementById('user-input').value = '';
 
-      // Scroll to bottom of chat log
-      chatLog.scrollTop = chatLog.scrollHeight;
-    }
+    // Scroll to bottom of chat log
+    chatLog.scrollTop = chatLog.scrollHeight;
+  }
 
-    function generateBotResponse(userInput) {
-      // Replace this with actual logic to generate AI responses
-      return "I'm just a simple example bot. I don't understand much.";
-    }
-  </script>
+  function generateBotResponse(userInput) {
+    // Convert user input to lowercase for easier comparison
+    userInput = userInput.toLowerCase().trim();
+
+    // Array of possible responses based on user input
+    var responses = [
+      "I'm sorry, I don't understand.",
+      "Could you please elaborate?",
+      "That's an interesting point.",
+      "I'm still learning. Can you ask me something else?",
+      "Let me look that up for you.",
+      "Have you tried restarting?",
+      "Tell me more about what you need help with.",
+      "I'm here to assist you!"
+    ];
+
+    // Generate a random index to select a response
+    var randomIndex = Math.floor(Math.random() * responses.length);
+    return responses[randomIndex];
+  }
+</script>
+
 </body>
 </html>
