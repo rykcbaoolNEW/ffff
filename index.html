@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Chatbot</title>
+<style>
+  /* Basic styling for the chat interface */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f0f0;
+  }
+  .chat-container {
+    max-width: 600px;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .chat-container .chat-log {
+    overflow-y: scroll;
+    max-height: 300px;
+    margin-bottom: 10px;
+    padding-right: 10px;
+  }
+  .chat-container .user-message {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  .chat-container .bot-message {
+    background-color: #e0f7fa;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-log" id="chat-log">
+      <div class="bot-message">Hello! How can I help you today?</div>
+    </div>
+    <input type="text" id="user-input" placeholder="Type your message...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+  <script>
+    function sendMessage() {
+      var userInput = document.getElementById('user-input').value;
+      var chatLog = document.getElementById('chat-log');
+
+      // Display user message
+      var userMessageElement = document.createElement('div');
+      userMessageElement.classList.add('user-message');
+      userMessageElement.textContent = userInput;
+      chatLog.appendChild(userMessageElement);
+
+      // Simulate bot response (in reality, this would come from a backend service)
+      var botResponseElement = document.createElement('div');
+      botResponseElement.classList.add('bot-message');
+      botResponseElement.textContent = generateBotResponse(userInput);
+      chatLog.appendChild(botResponseElement);
+
+      // Clear input field
+      document.getElementById('user-input').value = '';
+
+      // Scroll to bottom of chat log
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+
+    function generateBotResponse(userInput) {
+      // Replace this with actual logic to generate AI responses
+      return "I'm just a simple example bot. I don't understand much.";
+    }
+  </script>
+</body>
+</html>
